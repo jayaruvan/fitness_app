@@ -1,0 +1,77 @@
+<% include user.ejs%>
+<div class="container">  
+    <h1>Change activity</h1>
+    <form   action="/user/update/<%= activity.id %>" method="post">
+        
+        <div class="form-group row">
+            <label for="type" class="col-2 col-form-label">Typ</label>
+            <select name="type" class="custom-select mb-2 mr-sm-2 mb-sm-0" id="type">
+                
+                        <% switch(activity.activityType) { 
+                        case "Beh": { %>
+                        <option value="<%= activity.activityType %>"selected><%= activity.activityType %></option>
+                        <option value="Chodza">Chôdza</option>
+                        <option value="CrossFit">CrossFit</option>
+                        <option value="Workout">Workout</option>
+                        <option value="Joga">Jóga</option>
+                        <% break; } 
+                        case "Chodza": { %>
+                            <option value="Beh">Beh</option>
+                            <option value="<%= activity.activityType %>"selected><%= activity.activityType %></option>
+                            <option value="CrossFit">CrossFit</option>
+                            <option value="Workout">Workout</option>
+                            <option value="Joga">Jóga</option>
+                        <% break; } 
+                        case "CrossFit": { %>
+                            <option value="Beh">Beh</option>
+                            <option value="Chodza">Chodza</option>
+                            <option value="<%= activity.activityType %>"selected><%= activity.activityType %></option>
+                            <option value="Workout">Workout</option>
+                            <option value="Joga">Jóga</option>
+                        <% break; } 
+                        case "Workout": { %>
+                            <option value="Beh">Beh</option>
+                            <option value="Chodza">Chodza</option>
+                            <option value="CrossFit">CrossFit</option>
+                            <option value="<%= activity.activityType %>"selected><%= activity.activityType %></option>
+                            <option value="Joga">Jóga</option>
+                        <% break; } 
+                        case "Joga": { %>
+                            <option value="Beh">Beh</option>
+                            <option value="Chodza">Chodza</option>
+                            <option value="CrossFit">CrossFit</option>
+                            <option value="Workout">Workout</option>
+                            <option value="<%= activity.activityType %>"selected><%= activity.activityType %></option>
+                        <% break; } %>
+                        <% } %>
+            </select>
+        </div>
+        
+        <div class="form-group row">
+            <label for="description" class="col-2 col-form-label">Popis</label>
+            <div class="col-10">
+            <input name="description" class="form-control" type="text" value="<%= activity.description %>" id="description">
+            </div>
+        </div>
+        <div class="form-group row">
+                <label for="duration" class="col-2 col-form-label">Trvanie</label>
+                <div class="col-10">
+                <input name="duration" class="form-control" type="text" value="<%= activity.duration %>" id="duration">
+                </div>
+            </div>
+        <div class="form-group row">
+            <label for="dateTime" class="col-2 col-form-label">Dátum a čas</label>
+            <div class="col-10">
+            <input name="dateTime" class="form-control" type="datetime-local" value="<%= activity.dateAndTime %>" id="dateTime">
+            </div>
+        </div>
+        <div class="form-group row">
+                <label for="place" class="col-2 col-form-label">Miesto</label>
+                <div class="col-10">
+                <input name="place" class="form-control" type="text" value="<%= activity.place %>" id="place">
+                </div>
+        </div>
+        
+        <button type="submit" value="Submit" class="btn btn-primary btn-block w-25 h-25 d-inline-block">Submit</button>
+    </form>
+</div>

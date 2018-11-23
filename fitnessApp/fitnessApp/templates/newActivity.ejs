@@ -1,0 +1,47 @@
+<% include user.ejs%>
+
+<div class="container mt-3">  
+    <h1>Create new activity</h1>
+    <form action="/activity/new" method="post">
+        
+        <div class="form-group row ">
+                <label for="type" class="col-2 col-form-label">Typ</label>
+                <select name="type" class="custom-select mb-2 mr-sm-2 mb-sm-0" id="type">                    
+                    <option value="Beh">Beh</option>
+                    <option value="Chodza">Chôdza</option>
+                    <option value="CrossFit">CrossFit</option>
+                    <option value="Workout">Workout</option>
+                    <option value="Joga">Jóga</option>
+                </select>
+            
+            
+        </div>
+        
+        <div class="form-group row">
+            <label for="description" class="col-2 col-form-label">Popis</label>
+            <div class="col-10">
+            <input name="description" class="form-control" type="text" value="example: rychly beh na univerzitu " id="description">
+            </div>
+        </div>
+        <div class="form-group row">
+                <label for="duration" class="col-2 col-form-label">Trvanie</label>
+                <div class="col-10">
+                <input name="duration" class="form-control" type="text" value="example: 2.5h" id="duration">
+                </div>
+            </div>
+        <div class="form-group row">
+            <label for="dateTime" class="col-2 col-form-label">Dátum a čas</label>
+            <div class="col-10">
+            <input name="dateTime" class="form-control" type="datetime-local" value="2018-08-19T13:45:00" id="dateTime">
+            </div>
+        </div>
+        <div class="form-group row">
+                <label for="place" class="col-2 col-form-label">Miesto</label>
+                <div class="col-10">
+                <input name="place" class="form-control" type="text" value="example: Zilina" id="place">
+                </div>
+        </div>
+        
+        <button type="submit" value="Submit" class="btn btn-primary btn-block w-25 h-25 d-inline-block">Create</button>
+    </form>
+</div>

@@ -1,0 +1,29 @@
+{
+  "name": "fitnessapp",
+  "version": "0.0.1",
+  "description": "fitness aplikacia",
+  "author": "Denis Jakubcak",
+  "license": "ISC",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.9",
+    "ejs": "^2.6.1",
+    "ejs-locals": "^1.0.2",
+    "express": "~4.16.0",
+    "express-ejs-layouts": "^2.5.0",
+    "express-handlebars": "^3.0.0",
+    "handlebars": "^4.0.12",
+    "http-errors": "~1.6.2",
+    "jade": "~1.11.0",
+    "jsonwebtoken": "^8.4.0",
+    "jwt-decode": "^2.2.0",
+    "morgan": "~1.9.0",
+    "pg": "^7.6.1",
+    "sequelize": "^4.41.2"
+  }
+}

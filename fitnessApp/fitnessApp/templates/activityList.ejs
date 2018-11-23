@@ -1,0 +1,79 @@
+<% include searchBar.ejs%>
+<div class="container mt-5">  
+        <h1>Activities</h1>
+</div>
+<a></a>
+<div class="container">  
+    <div class="w-25 p-3" >
+        <a class="btn btn-secondary  btn-sm" href="/activity/new" role="button">New Activity</a>
+    </div>
+    <div class="list-group">
+        <% for(var i = 0; i < activities.length; i++) { %>  
+            <a href="/user/getForm/<%= activities[i].id %>" class="list-group-item list-group-item-action flex-column align-items-start">
+                <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1"> <%= activities[i].activityType %> </h5>
+                    <small>Aktivita trvala <%= activities[i].duration %>. </small>
+                </div>
+                <p class="mb-1"><%= activities[i].description %></p>
+                <small><%= (activities[i].dateAndTime).toString() %></small>
+                <small>Miesto: <%= activities[i].place %></small>
+            </a>
+            
+            <div class="d-flex flex-row">
+                <div class="w-25 p-3" >
+                    <a class="btn btn-danger  btn-sm" href="/user/delete/<%= activities[i].id %>" role="button">Delete activity</a>
+                </div>
+                <div class="w-25 p-3" >
+                        <a class="btn btn-secondary  btn-sm" href="/user/getForm/<%= activities[i].id %>" role="button">Change activity</a>
+                </div>
+            </div>
+            
+        <% } %>
+    </div>
+    <nav class="align-bottom" aria-label="Page navigation example">
+        <ul class="pagination"> 
+            <li class="page-item"><a class="page-link" href="<%= urlForPaging %>1">First</a></li>
+            <li class="page-item"><a class="page-link" href="<%= urlForPaging %><%= ((pageIndex-1<1)?1:pageIndex-1) %>">Previous</a></li>
+            <%  if(parseInt(pageIndex) < 4) {
+                for(let i = 1; i < (parseInt(numberOfPages)+1); i++){ 
+                    if(i === 6){
+                        break;
+                    }%>
+                    <li class="page-item"><a class="page-link" href="<%= urlForPaging %><%= i %>"><%= i %></a></li>
+                <%}
+            } else {
+                console.log('cislo '+parseInt(parseInt(numberOfPages)-parseInt(pageIndex)));
+                if(parseInt(parseInt(numberOfPages)-parseInt(pageIndex))>parseInt(1)) { 
+                    for(let j = parseInt(parseInt(pageIndex)-parseInt(2)); j < parseInt(parseInt(pageIndex)+parseInt(3));j++) { %>
+                        <li class="page-item"><a class="page-link" href="<%= urlForPaging %><%= j %>"><%= j %></a></li>
+                    <% }
+                    console.log('1 '+ pageIndex+' '+numberOfPages);
+                } else{
+                    if(parseInt(numberOfPages)===parseInt(pageIndex)){
+                        for(let x = (parseInt(pageIndex)-4); x < (parseInt(pageIndex)+1);x++) { %>
+                            <li class="page-item"><a class="page-link" href="<%= urlForPaging %><%= x %>"><%= x %></a></li>
+                        <% }
+                        console.log('2 '+ pageIndex+' '+numberOfPages);
+                    } else {
+                        for(let x = parseInt(parseInt(pageIndex)-3); x < (parseInt(pageIndex)+parseInt(2));x++) { %>
+                            <li class="page-item"><a class="page-link" href="<%= urlForPaging %><%= x %>"><%= x %></a></li>
+                        <% }
+                        console.log('3 '+ pageIndex+' '+numberOfPages);
+                    }
+                    
+                 }
+            } %>
+            <% let next;
+            if((parseInt(pageIndex)+1)>parseInt(numberOfPages)) {
+                next = parseInt(pageIndex);
+            } else {
+                next = parseInt((parseInt(pageIndex)+1));
+            }
+            %>
+            <li class="page-item"><a class="page-link" href="<%= urlForPaging %><%= next %>">Next</a></li>
+            
+            
+            <li class="page-item"><a class="page-link" href="<%= urlForPaging %><%= numberOfPages %>">Last</a></li>
+        </ul>
+    </nav>
+</div>
